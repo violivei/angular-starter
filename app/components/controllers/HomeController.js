@@ -39,7 +39,21 @@ angular.module('mostPopularListingsApp.home', ['ngRoute'])
         firebase.initializeApp(config);
         var rootRef = firebase.database().ref();
         rootRef.on('value', function(snapshot) {
-		  console.log(snapshot.val());
+
+			console.log(snapshot.val());
+			var url = "";
+
+			if(snapshot.val() === "open my learning"){
+				url = "http://mylearning.accenture.com";
+			}else if(snapshot.val() === "open my performance"){
+				url = "http://myperformance.accenture.com";
+			}else{
+				url = "http://myte.accenture.com";
+			}
+
+		  	var win = window.open(url, '_blank');
+  			win.focus();
+
 		});
 	};
 
