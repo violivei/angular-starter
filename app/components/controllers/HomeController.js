@@ -38,23 +38,26 @@ angular.module('mostPopularListingsApp.home', ['ngRoute'])
         };
         firebase.initializeApp(config);
         var rootRef = firebase.database().ref();
+        console.log("HomeController");
         rootRef.on('value', function(snapshot) {
 
 			console.log(snapshot.val());
 			var url = "";
-
-			if(snapshot.val() === "open my learning"){
-				url = "http://mylearning.accenture.com";
-			}else if(snapshot.val() === "open my performance"){
-				url = "http://myperformance.accenture.com";
-			}else{
-				url = "http://myte.accenture.com";
+			var win;
+			if(snapshot.val() === "open ambev current status"){
+				url = "https://saoap1011.dir.svc.accenture.com/single?appid=396cc447-0468-41d5-87a8-7586c1213b2b&sheet=PmtYCm&opt=nointeraction&select=clearall";
+				console.log(url);
+				win = window.open(url, '_blank');
+  				win.focus();
+			}else if(snapshot.val() === "open ambev historical data"){
+				url = "https://saoap1011.dir.svc.accenture.com/single?appid=396cc447-0468-41d5-87a8-7586c1213b2b&sheet=3d7dbedd-b023-43c6-ac6d-744cbca48e76&opt=nointeraction&select=clearall";
+				console.log(url);
+				win = window.open(url, '_blank');
+  				win.focus();
 			}
-
-		  	var win = window.open(url, '_blank');
-  			win.focus();
-
 		});
+
+		rootRef.remove();
 	};
 
 	this.message = "Hello Home!";
