@@ -54,7 +54,16 @@ angular.module('mostPopularListingsApp.home', ['ngRoute'])
 				console.log(url);
 				win = window.open(url, '_blank');
   				win.focus();
+			}else if(snapshot.val() === "open ambev historical data"){
+				url = "https://saoap1011.dir.svc.accenture.com/single/?appid=478dc1a0-c477-4267-9ad2-c67bf19aa5b8&sheet=PmtYCm&opt=nointeraction&select=clearall";
+				console.log(url);
+				win = window.open(url, '_blank');
+			}else if(snapshot.val() === "open ambev historical data"){
+				url = "https://saoap1011.dir.svc.accenture.com/single/?appid=478dc1a0-c477-4267-9ad2-c67bf19aa5b8&sheet=3d7dbedd-b023-43c6-ac6d-744cbca48e76&opt=nointeraction&select=clearall";
+				console.log(url);
+				win = window.open(url, '_blank');
 			}
+
 		});
 
 		rootRef.remove();
